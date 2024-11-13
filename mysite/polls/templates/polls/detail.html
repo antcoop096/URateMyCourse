@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Page</title>
+    <style>
+        body {
+            background-color: #881c1c;
+        }
+    </style>
+</head>
+<body>
+<p style="background-color: #e1e8ef; padding: 10px; border-radius: 5px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ question.description }}</p>
+
+<form action="{% url 'polls:add_rating' question.id %}" method="post">
+    {% csrf_token %}
+    <label for="new_rating" style="color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Enter a Review</label>
+    <input type="text" name="rating_str" id="new_rating" required>
+    <input type="submit" value="Submit Review">
+</form>
+<br>
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1 style=" color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ question.question_text }}</h1></legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        
+        <!-- Display all choices for voting -->
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}" style=" color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ choice.choice_text }} stars</label><br>
+        {% endfor %}
+        
+        <input type="submit" value="Vote">
+    </fieldset>
+
+    <br>
+
+<!-- Display all ratings below the form -->
+<h2 style=" color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Reviews:</h2>
+{% for rating in question.rating_set.all %}
+    <p style="color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ rating.rating_str }}</p>
+{% empty %}
+    <p style="color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">No reviews available for this question.</p>
+{% endfor %}
+</body>

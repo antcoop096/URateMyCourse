@@ -1,0 +1,54 @@
+<!DOCTYPE html> <!--html is used to define structure/building blocks-->
+{% load static %}
+<html>  <!--indicates we are writing html code-->
+    <head style="background-color: white; padding: 10px; border-radius: 5px;"> <!--gives browser info about page-->
+            <title>URateMyCourse</title><!--title of webpage -->
+            <link rel="stylesheet" type="text/css" href="{% static 'polls/css/stylesheet.css' %}">
+            <script src="{% static 'polls/js/script.js' %}" defer></script>
+    </head> 
+    <body>
+        <div class="centercontainer" float="left" style="background-color: #881c1c;">
+            <img src="{% static 'polls/images/logo.png' %}" length="200" width="200">
+        </div>
+
+        <button class="tablink" onclick="openPage('Home', this, '#ffffff')" id="defaultOpen"style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Home</button>
+        <button class="tablink" onclick="openPage('About', this, '#ffffff')" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">How to Use</button>        
+        </div>
+
+        <div id="Home" class="tabcontent">
+            <div class="centercontainer">
+                <p1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Home</p1>
+            </div>
+            <div class="centercontainer">
+                <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Welcome to URateMyCourse</p>
+            </div>              
+            <div class="centercontainer">
+            <form action="{% url 'polls:search' %}" method="post">
+                {% csrf_token %}
+                <label for="class" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Search for a class:</label>
+                <input type="text" name="question" id="class" required>
+                <input type="submit" value="Search">
+            </form>
+            </div>
+            <div class="centercontainer" width="100%" height="100vh" object-fit="cover">
+                <img src="{% static 'polls/images/UMassPic.png' %}" alt="UMass Campus">
+            </div>
+
+        </div>
+          
+        <div id="About" class="tabcontent">
+            <h3 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">How to Use</h3>
+            <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Use search to find classes and submit reviews and ratings!</p> 
+        </div>
+
+
+    </body>
+
+
+
+
+
+</html>
+
+
+

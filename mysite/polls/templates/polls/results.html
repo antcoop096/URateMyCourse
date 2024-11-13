@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/stylesheet.css' %}">
+<script src="{% static 'polls/js/script.js' %}" defer></script>
+<div class="centercontainer" width="100%" height="100vh" object-fit="cover">
+    <img src="{% static 'polls/images/UMassPic.png' %}" alt="UMass Campus">
+</div>
+<body style="background-color: #881c1c; padding: 10px; border-radius: 5px;">
+<h1 style="color: white;" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li style="color: white;" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ choice.choice_text }} star -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}" style="color: white;" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Go back to the class?</a>
+</body>

@@ -1,0 +1,75 @@
+
+* {box-sizing: border-box}
+.p1 {
+  font-family: "Copperplate", fantasy;
+}
+body {
+  background-color: #881c1c;
+}
+.question-description {
+  background-color: #288ae0;
+  padding: 10px;
+  border-radius: 5px;
+}
+h1 {
+    color: white;
+    font-size: 25px;
+  }
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+.tablink {
+  font-family: "Verdana", sans-serif;
+  background-color: #881c1c;
+  color: black;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 50%;
+}
+
+.tablink:hover {
+  font-family: "Verdana", sans-serif;
+  background-color: #ffffff;
+}
+
+.tabcontent {
+  font-family: "Verdana", sans-serif;
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+.centercontainer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+.topnav input[type=text] { /* textbox itself */
+    font-family: "Verdana", sans-serif;
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+  }
+
+#Home {background-color: #881c1c;}
+#About {background-color: #881c1c;}
+#searchBox {  /* id for Set the height/ width of the search box */
+    width: 300px;       
+    height: 40px;        
+
+}
